@@ -40,7 +40,7 @@ create table event
     id integer PRIMARY KEY,
     game_id integer,
     team_name varchar(30),
-    time_of_event integer,
+    time_of_event varchar(5),
     description_event varchar(60),
     FOREIGN KEY (game_id) REFERENCES game(id)
 );
