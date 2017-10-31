@@ -19,14 +19,14 @@ drop table vball_team;
 create table team
 (
     id integer PRIMARY KEY,
-    school_name varchar(50),
-    conference varchar(50)
+    school_name varchar(50)
 );
 
 -- Soccer Player table
 create table player
 (
     id integer PRIMARY KEY,
+    team_id integer,
     name varchar(30),
     year varchar(10),
     position varchar(15),
@@ -36,15 +36,18 @@ create table player
     shots integer,
     shots_on_goal integer,
     yellow_cards integer,
-    red_cards integer
+    red_cards integer,
+    FOREIGN KEY (team_id) REFERENCES team(id)
 );
 
 -- Soccer Game table
 create table game
 (
     id integer PRIMARY KEY,
-    home_team varchar(30),
-    away_team varchar(30)
+    home_team integer,
+    away_team integer,
+    FOREIGN KEY (home_team) REFERENCES team(id),
+    FOREIGN KEY (away_team) REFERENCES team(id)
 );
 
 -- Soccer Event table
@@ -54,10 +57,11 @@ create table event
 (
     id integer PRIMARY KEY,
     game_id integer,
-    team_name varchar(30),
+    team_id integer,
     time_of_event varchar(6),
     description_event varchar(100),
-    FOREIGN KEY (game_id) REFERENCES game(id)
+    FOREIGN KEY (game_id) REFERENCES game(id),
+    FOREIGN KEY (team_id) REFERENCES team(id)
 );
 
 -- Soccer Player_game table
@@ -80,8 +84,7 @@ create table player_game
 create table vball_team
 (
     id integer PRIMARY KEY,
-    school_name varchar(50),
-    conference varchar(50)
+    school_name varchar(50)
 );
 
 -- Volleyball Player table
@@ -124,11 +127,13 @@ create table vball_play
 (
     id integer PRIMARY KEY,
     game_id integer,
+    team_id integer,
     server_id integer,
     rotation integer,
     result varchar(60),
     actor_id integer,
     FOREIGN KEY (game_id) REFERENCES vball_game(id),
+    FOREIGN KEY (team_id) REFERENCES vball_team(id),
     FOREIGN KEY (server_id) REFERENCES vball_player(id),
     FOREIGN KEY (actor_id) REFERENCES vball_player(id)
 );
@@ -140,7 +145,7 @@ create table vball_player_game
 (
     player_id integer,
     game_id integer,
-    PRIMARY KEY(player_id, game_id)
+    PRIMARY KEY(player_id, game_id),
     FOREIGN KEY (player_id) REFERENCES vball_player(id),
     FOREIGN KEY (game_id) REFERENCES vball_game(id)
 );
