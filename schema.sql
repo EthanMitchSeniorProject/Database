@@ -91,7 +91,7 @@ create table vball_team
 create table vball_player
 (
     id integer PRIMARY KEY,
-    school_id integer,
+    team_id integer,
     name varchar(30),
     year varchar(10),
     position varchar(6),
@@ -107,7 +107,7 @@ create table vball_player
     solo_blocks integer,
     block_assists integer,
     points integer,
-    FOREIGN KEY (school_id) REFERENCES vball_team(id)
+    FOREIGN KEY (team_id) REFERENCES vball_team(id)
 );
 
 -- Volleyball Game table
@@ -132,6 +132,7 @@ create table vball_play
     rotation integer,
     result varchar(60),
     actor_id integer,
+    new_score varchar(10),
     FOREIGN KEY (game_id) REFERENCES vball_game(id),
     FOREIGN KEY (team_id) REFERENCES vball_team(id),
     FOREIGN KEY (server_id) REFERENCES vball_player(id),
