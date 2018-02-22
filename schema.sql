@@ -37,6 +37,7 @@ create table player
     shots_on_goal integer,
     yellow_cards integer,
     red_cards integer,
+    num integer,
     FOREIGN KEY (team_id) REFERENCES team(id)
 );
 
@@ -46,6 +47,7 @@ create table game
     id integer PRIMARY KEY,
     home_team integer,
     away_team integer,
+    game_date date,
     FOREIGN KEY (home_team) REFERENCES team(id),
     FOREIGN KEY (away_team) REFERENCES team(id)
 );
@@ -107,6 +109,7 @@ create table vball_player
     solo_blocks integer,
     block_assists integer,
     points integer,
+    num integer,
     FOREIGN KEY (team_id) REFERENCES vball_team(id)
 );
 
@@ -116,6 +119,7 @@ create table vball_game
     id integer PRIMARY KEY,
     home_team integer,
     away_team integer,
+    game_date date,
     FOREIGN KEY (home_team) REFERENCES vball_team(id),
     FOREIGN KEY (away_team) REFERENCES vball_team(id)
 );
