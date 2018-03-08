@@ -137,10 +137,12 @@ create table vball_play
     result varchar(60),
     actor_id integer,
     new_score varchar(10),
+    winning_team_point integer,
     FOREIGN KEY (game_id) REFERENCES vball_game(id),
     FOREIGN KEY (team_id) REFERENCES vball_team(id),
     FOREIGN KEY (server_id) REFERENCES vball_player(id),
-    FOREIGN KEY (actor_id) REFERENCES vball_player(id)
+    FOREIGN KEY (actor_id) REFERENCES vball_player(id),
+    FOREIGN KEY (winning_team_point) REFERENCES vball_team(id)
 );
 
 -- Volleyball Player_game table
