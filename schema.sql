@@ -3,25 +3,26 @@
 -- Tables defined with primary key and, if necessary, foreign key constraints
 -- Varchar lengths are all estimates of how long particular strings may be
 
-drop table soccer_team_route;
 drop table player_game;
 drop table event;
 drop table game;
 drop table player;
+drop table soccer_team_route;
 drop table team;
 
-drop table vball_team_route;
 drop table vball_player_game;
 drop table vball_play;
 drop table vball_game;
 drop table vball_player;
+drop table vball_team_route;
 drop table vball_team;
 
 -- Soccer Team table
 create table team
 (
     id integer PRIMARY KEY,
-    school_name varchar(50)
+    school_name varchar(50),
+    url_route varchar(75)
 );
 
 -- Soccer Player table
@@ -88,7 +89,8 @@ create table player_game
 create table vball_team
 (
     id integer PRIMARY KEY,
-    school_name varchar(50)
+    school_name varchar(50),
+    url_route varchar(75)
 );
 
 -- Volleyball Player table
@@ -158,17 +160,3 @@ create table vball_player_game
     FOREIGN KEY (player_id) REFERENCES vball_player(id),
     FOREIGN KEY (game_id) REFERENCES vball_game(id)
 );
-
-create table soccer_team_route (
-    team_id integer,
-    team_address varchar(75),
-    PRIMARY KEY (team_id),
-    FOREIGN KEY (team_id) REFERENCES team(id)
-);
-
-create table vball_team_route (
-    team_id integer,
-    team_address varchar(75),
-    PRIMARY KEY (team_id),
-    FOREIGN KEY (team_id) REFERENCES vball_team(id)
-)
