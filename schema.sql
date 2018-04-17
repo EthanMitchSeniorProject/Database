@@ -7,14 +7,12 @@ drop table player_game;
 drop table event;
 drop table game;
 drop table player;
-drop table soccer_team_route;
 drop table team;
 
 drop table vball_player_game;
 drop table vball_play;
 drop table vball_game;
 drop table vball_player;
-drop table vball_team_route;
 drop table vball_team;
 
 -- Soccer Team table
