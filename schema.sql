@@ -88,7 +88,7 @@ create table vball_team
 (
     id integer PRIMARY KEY,
     school_name varchar(50),
-    url_route varchar(75)
+    url_route varchar(150)
 );
 
 -- Volleyball Player table
@@ -122,8 +122,10 @@ create table vball_game
     home_team integer,
     away_team integer,
     game_date date,
+    team_collecting integer,
     FOREIGN KEY (home_team) REFERENCES vball_team(id),
-    FOREIGN KEY (away_team) REFERENCES vball_team(id)
+    FOREIGN KEY (away_team) REFERENCES vball_team(id),
+    FOREIGN KEY (team_collecting) REFERENCES vball_team(id)
 );
 
 -- Volleyball Play table
@@ -145,16 +147,4 @@ create table vball_play
     FOREIGN KEY (server_id) REFERENCES vball_player(id),
     FOREIGN KEY (actor_id) REFERENCES vball_player(id),
     FOREIGN KEY (winning_team_point) REFERENCES vball_team(id)
-);
-
--- Volleyball Player_game table
--- This connects a specific player to a specific volleyball game
--- Many players to many games (Many-to-Many relationship)
-create table vball_player_game
-(
-    player_id integer,
-    game_id integer,
-    PRIMARY KEY(player_id, game_id),
-    FOREIGN KEY (player_id) REFERENCES vball_player(id),
-    FOREIGN KEY (game_id) REFERENCES vball_game(id)
 );
