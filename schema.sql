@@ -9,7 +9,6 @@ drop table game;
 drop table player;
 drop table team;
 
-drop table vball_player_game;
 drop table vball_play;
 drop table vball_game;
 drop table vball_player;
