@@ -1,4 +1,4 @@
--- Schema.sql defines the tables necessary for storing the soccer statistics
+-- Schema.sql defines the tables necessary for storing the soccer and volleyball statistics
 -- Tables must be dropped in reverse order to ensure integrity of foreign keys
 -- Tables defined with primary key and, if necessary, foreign key constraints
 -- Varchar lengths are all estimates of how long particular strings may be
